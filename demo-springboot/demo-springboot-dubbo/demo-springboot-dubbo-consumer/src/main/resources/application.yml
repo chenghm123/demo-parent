@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: demo-springboot-dubbo
+  dubbo:
+    registry:
+      address: zookeeper:2181
+    application:
+      name: demo-springboot-dubbo-provider
+    base-package: com.accelerator.demo.springboot.dubbo.consumer.client

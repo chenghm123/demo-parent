@@ -1,0 +1,31 @@
+eureka:
+  client:
+    # 表示是否注册自身到eureka服务器
+    register-with-eureka: true
+    # 是否从eureka上获取注册信息
+    fetch-registry: true
+  instance:
+    appname: eureka-server
+  server:
+    # 注册中心清理间隔（单位毫秒，默认60*1000）
+    eviction-interval-timer-in-ms: 60000
+    # 关闭注册中心自我保护机制
+    # enable-self-preservation: false
+    # 如果在Eureka Server的首页看到以下这段提示，则说明Eureka已经进入了保护模式：
+    #      EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE
+    #      UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND
+    #      HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.
+    # 一般出现此模式时，服务返回错误。即如果真实的服务已经Down掉，但在注册中心界面服务却一直存在，且显示为UP状态。
+    # 产生原因：
+    #     Eureka Server在运行期间，会统计心跳失败的比例在15分钟之内是否
+    # 低于85%，如果出现低于的情况（在单机调试的时候很容易满足，实际在
+    # 生产环境上通常是由于网络不稳定导致），Eureka Server会将当前的实例注册信息保护起来，同时提
+    # 示这个警告。保护模式主要用于一组客户端和Eureka Server之间存在网络分
+    # 区场景下的保护。一旦进入保护模式，Eureka Server将会尝试保护其服务注
+    # 册表中的信息，不再删除服务注册表中的数据（也就是不会注销任何微服务）。
+
+spring:
+  application:
+    name: eureka-server
+# eureka.instance.appname 与 spring.application.name 的区别
+# 参考 https://blog.csdn.net/ezreal_king/article/details/72930401

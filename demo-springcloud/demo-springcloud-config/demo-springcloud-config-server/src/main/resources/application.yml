@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          # 本地clone位置
+          basedir: C:/Users/Accelerator/IdeaProjects/demo-parent
+          # 配置仓库路径
+          search-paths: demo-springcloud/demo-springcloud-config/springcloud-config-repo
+          #配置git仓库地址
+          uri:  git@github.com:chenghm123/demo-parent.git
+          # 配置仓库的分支
+          default-label: master
+          # clone仓库超时时间
+          timeout: 60
+  application:
+    name: config-server
+# 通过eureka注册中心实现高可用
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    appname: config-server

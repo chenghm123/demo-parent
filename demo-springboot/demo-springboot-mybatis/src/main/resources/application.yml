@@ -1,0 +1,23 @@
+spring:
+  datasource: # 数据源配置
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/demo?useSSL=false
+    username: root
+    password: root
+
+mybatis: # Mybatis配置
+  mapper-locations: classpath:mybatis/mappers/*.xml
+  config-location: classpath:mybatis-config.xml
+
+mapper: # Mybatis通用mapper
+  mappers: com.accelerator.demo.springboot.mybatis.DemoMapper #mappers 多个接口时逗号隔开
+  identity: MYSQL
+  not-empty: false
+
+#Mybatis Pagehelper
+pagehelper:
+  helper-dialect: mysql
+
+logging:
+  level:
+    com.accelerator.demo.springboot.mybatis.mapper: debug

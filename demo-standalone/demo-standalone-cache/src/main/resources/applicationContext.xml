@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 打开bean注解支持( 常用注释有 : @Repository(数据库层注解) @Service(服务层注解) @Controller(控制层注解) @Component(通用注解) ) -->
+    <context:component-scan base-package="com.accelerator.demo.standalone" use-default-filters="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!-- JSON转换工具 -->
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        <property name="serializationInclusion">
+            <util:constant static-field="com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY"/>
+        </property>
+        <property name="indentOutput" value="true"/>
+    </bean>
+    <bean class="ApplicationContextHolder"/>
+
+    <!-- Spring Cache Config -->
+    <cache:annotation-driven cache-manager="cacheManager" proxy-target-class="true"/>
+    <bean id="cacheManager" class="com.google.code.ssm.spring.SSMCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="com.google.code.ssm.spring.SSMCache" c:cache-ref="defaultCache" c:expiration="3600"/>
+            </set>
+        </property>
+    </bean>
+
+    <!-- Memcached Config -->
+    <bean name="defaultCache" class="com.google.code.ssm.CacheFactory">
+        <property name="cacheClientFactory">
+            <bean class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl"/>
+        </property>
+        <property name="addressProvider">
+            <bean class="com.google.code.ssm.config.DefaultAddressProvider">
+                <property name="address" value="demo.accelerator.com:11211"/>
+            </bean>
+        </property>
+        <property name="configuration">
+            <bean class="com.google.code.ssm.providers.CacheConfiguration">
+                <property name="consistentHashing" value="true"/>
+            </bean>
+        </property>
+        <property name="cacheName" value="defaultCache"/>
+    </bean>
+
+</beans>

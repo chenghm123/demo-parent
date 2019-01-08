@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo-springboot-dubbo
+  dubbo:
+    registry:
+      address: zookeeper:2181
+    application:
+      name: demo-springboot-dubbo-consumer
+    base-package: com.accelerator.demo.springboot.dubbo.provider.impl
+    protocol:
+    port: 20880

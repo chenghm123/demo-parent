@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:sharding="http://shardingsphere.io/schema/shardingsphere/sharding"
+       xmlns:master-slave="http://shardingsphere.io/schema/shardingsphere/masterslave"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://shardingsphere.io/schema/shardingsphere/sharding http://shardingsphere.io/schema/shardingsphere/sharding/sharding.xsd
+       http://shardingsphere.io/schema/shardingsphere/masterslave http://shardingsphere.io/schema/shardingsphere/masterslave/master-slave.xsd">
+
+    <!--批量包扫描-->
+    <context:component-scan base-package="com.accelerator.demo.standalone.shardingsphere">
+        <!--排除包含有@Controller注解的类 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <bean id="dataSource_master" class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://mysql:3306/master?useSSL=false&amp;autoReconnect=true"
+          p:username="root"
+          p:password="root"
+          p:suppressClose="true"/>
+    <bean id="dataSource_slave_0" class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://mysql:3306/salve_0?useSSL=false&amp;autoReconnect=true"
+          p:username="root"
+          p:password="root"
+          p:suppressClose="true"/>
+    <bean id="dataSource_slave_1" class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://mysql:3306/salve_1?useSSL=false&amp;autoReconnect=true"
+          p:username="root"
+          p:password="root"
+          p:suppressClose="true"/>
+
+    <bean id="randomStrategy"
+          class="io.shardingsphere.api.algorithm.masterslave.RoundRobinMasterSlaveLoadBalanceAlgorithm"/>
+    <master-slave:data-source id="dataSource" master-data-source-name="dataSource_master"
+                              slave-data-source-names="dataSource_slave_0, dataSource_slave_1"
+                              strategy-ref="randomStrategy"/>
+</beans>
