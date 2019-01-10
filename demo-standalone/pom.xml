@@ -53,6 +53,7 @@
         <memcached.java.client.version>3.0.2</memcached.java.client.version>
         <simple-spring-memcached.version>3.6.1</simple-spring-memcached.version>
         <mysql.version>5.1.41</mysql.version>
+        <h2.version>1.4.197</h2.version>
         <shardingsphere.version>3.0.0</shardingsphere.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
@@ -500,6 +501,13 @@
                 <version>${mysql.version}</version>
             </dependency>
 
+            <!-- Embedded SQL Databases -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+
             <!-- Sharding Sphere -->
             <dependency>
                 <groupId>io.shardingsphere</groupId>
@@ -857,5 +865,6 @@
         <module>demo-standalone-zxing</module>
         <module>demo-standalone-canal</module>
         <module>demo-standalone-shiro</module>
+        <module>demo-standalone-h2</module>
     </modules>
 </project>
