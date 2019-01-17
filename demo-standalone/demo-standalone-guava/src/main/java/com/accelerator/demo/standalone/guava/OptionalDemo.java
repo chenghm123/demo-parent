@@ -2,14 +2,12 @@ package com.accelerator.demo.standalone.guava;
 
 
 import com.google.common.base.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Set;
 
+@Slf4j
 public class OptionalDemo {
-
-    private static final Logger logger = LoggerFactory.getLogger(OptionalDemo.class);
 
     public static void main(String[] args) {
         // 创建指定引用的Optional实例，若引用为null则快速失败

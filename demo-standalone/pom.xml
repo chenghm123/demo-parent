@@ -21,7 +21,7 @@
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
         <commons-net.version>3.6</commons-net.version>
         <commons-pool2.version>2.4.2</commons-pool2.version>
-        <guava.version>20.0</guava.version>
+        <guava.version>27.0.1-jre</guava.version>
         <aspectj.version>1.8.10</aspectj.version>
         <spring.version>4.3.18.RELEASE</spring.version>
         <spring-data-rest-webmvc.version>2.6.4.RELEASE</spring-data-rest-webmvc.version>
