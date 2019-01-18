@@ -51,6 +51,7 @@ interface EventBusListener {
 
     /**
      * AllowConcurrentEvents是否保证Listener对象线程安全
+     * 最好开启AllowConcurrentEvents 无锁性能非常高
      * 例如成员变量
      */
     @Subscribe @AllowConcurrentEvents
