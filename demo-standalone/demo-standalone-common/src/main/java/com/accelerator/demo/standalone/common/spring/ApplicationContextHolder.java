@@ -1,17 +1,19 @@
 package com.accelerator.demo.standalone.common.spring;
 
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.ApplicationContextAware;
 
-public class ApplicationContextHolder implements ApplicationListener<ContextRefreshedEvent> {
+import java.util.Objects;
+
+public class ApplicationContextHolder implements ApplicationContextAware {
 
     private static ApplicationContextHolder instance;
 
     private static ApplicationContext applicationContext;
 
     public static ApplicationContext getRequiredApplicationContext() {
-        if (applicationContext == null) {
+        if (Objects.isNull(getApplicationContext())) {
             throw new IllegalStateException(
                     "ApplicationContextHolder instance [" + instance + "] does not run in an ApplicationContext");
         }
@@ -23,8 +25,9 @@ public class ApplicationContextHolder implements ApplicationListener<ContextRefr
     }
 
     @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-        applicationContext = event.getApplicationContext();
+    public void setApplicationContext(ApplicationContext applicationContext)
+            throws BeansException {
+        ApplicationContextHolder.applicationContext = applicationContext;
         instance = this;
     }
 
