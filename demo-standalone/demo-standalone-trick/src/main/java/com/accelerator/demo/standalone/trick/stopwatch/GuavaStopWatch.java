@@ -9,7 +9,7 @@ public class GuavaStopWatch {
     public static void main(String[] args) throws InterruptedException {
         Stopwatch stopwatch = Stopwatch.createUnstarted();
         stopwatch.start();
-        Thread.sleep(1020);
+        Thread.sleep(1000);
         stopwatch.stop();
 
 

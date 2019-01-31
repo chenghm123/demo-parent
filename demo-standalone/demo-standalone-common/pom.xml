@@ -95,6 +95,18 @@
             <artifactId>mybatis</artifactId>
         </dependency>
 
+        <!-- Excel Libraries -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+        </dependency>
+
+        <!-- UserAgent Utils -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+        </dependency>
+
         <!-- Java Specifications -->
         <dependency>
             <groupId>javax.servlet</groupId>
