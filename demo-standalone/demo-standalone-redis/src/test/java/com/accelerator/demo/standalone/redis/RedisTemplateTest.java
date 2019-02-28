@@ -1,4 +1,4 @@
-package com.accelerator.demo.standalone.redis.test;
+package com.accelerator.demo.standalone.redis;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

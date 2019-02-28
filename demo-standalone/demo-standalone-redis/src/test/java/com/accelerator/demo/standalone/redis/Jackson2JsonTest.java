@@ -1,4 +1,4 @@
-package com.accelerator.demo.standalone.redis.test;
+package com.accelerator.demo.standalone.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
