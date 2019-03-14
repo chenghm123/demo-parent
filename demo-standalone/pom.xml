@@ -22,7 +22,6 @@
         <commons-net.version>3.6</commons-net.version>
         <commons-pool2.version>2.4.2</commons-pool2.version>
         <guava.version>27.0.1-jre</guava.version>
-        <aspectj.version>1.8.10</aspectj.version>
         <spring.version>4.3.18.RELEASE</spring.version>
         <spring-data-rest-webmvc.version>2.6.4.RELEASE</spring-data-rest-webmvc.version>
         <spring-data-jpa.version>1.11.4.RELEASE</spring-data-jpa.version>
@@ -41,8 +40,10 @@
         <javassist.version>3.22.0-GA</javassist.version>
         <cglib.version>3.2.6</cglib.version>
         <asm.version>6.0</asm.version>
+        <aspectj.version>1.8.10</aspectj.version>
         <httpclient.version>4.5.6</httpclient.version>
         <jsoup.version>1.11.3</jsoup.version>
+        <hbase.version>1.2.11</hbase.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <javax.el.version>3.0.1-b10</javax.el.version>
         <velocity.version>1.7</velocity.version>
@@ -311,6 +312,17 @@
                 <version>${asm.version}</version>
             </dependency>
 
+            <!-- Aspect Oriented -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
 
             <!-- Http Support -->
             <dependency>
@@ -331,16 +343,17 @@
                 <version>${jsoup.version}</version>
             </dependency>
 
-            <!-- Aspect Oriented -->
+            <!-- HBase Clients -->
             <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjrt</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>${aspectj.version}</version>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-common</artifactId>
+                <version>${hbase.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Spring Frameworks -->
