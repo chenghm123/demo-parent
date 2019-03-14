@@ -36,6 +36,8 @@
         <zxing.version>3.3.3</zxing.version>
         <netty.version>4.1.15.Final</netty.version>
         <mina.version>2.0.16</mina.version>
+        <disruptor.version>3.4.2</disruptor.version>
+        <jctools.version>2.1.2</jctools.version>
         <javassist.version>3.22.0-GA</javassist.version>
         <cglib.version>3.2.6</cglib.version>
         <asm.version>6.0</asm.version>
@@ -253,6 +255,18 @@
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
                 <version>${mina.version}</version>
+            </dependency>
+
+            <!-- Concurrency Libraries -->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jctools</groupId>
+                <artifactId>jctools-core</artifactId>
+                <version>${jctools.version}</version>
             </dependency>
 
             <!-- Bytecode Libraries -->
@@ -899,5 +913,6 @@
         <module>demo-standalone-canal</module>
         <module>demo-standalone-shiro</module>
         <module>demo-standalone-h2</module>
+        <module>demo-standalone-other</module>
     </modules>
 </project>
