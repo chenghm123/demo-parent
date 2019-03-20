@@ -2,8 +2,6 @@ package com.accelerator.demo.standalone.other.aggregate;
 
 import org.junit.Test;
 
-import java.io.Serializable;
-
 public class AggregateSlotTest {
 
     @Test
@@ -19,9 +17,7 @@ public class AggregateSlotTest {
         slot.addToSlot(mKey1, cs2);
 
 
-
     }
-
 
 
 }

@@ -37,6 +37,7 @@
         <mina.version>2.0.16</mina.version>
         <disruptor.version>3.4.2</disruptor.version>
         <jctools.version>2.1.2</jctools.version>
+        <metrics.version>4.0.5</metrics.version>
         <javassist.version>3.22.0-GA</javassist.version>
         <cglib.version>3.2.6</cglib.version>
         <asm.version>6.0</asm.version>
@@ -268,6 +269,13 @@
                 <groupId>org.jctools</groupId>
                 <artifactId>jctools-core</artifactId>
                 <version>${jctools.version}</version>
+            </dependency>
+
+            <!-- Application Metrics -->
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-core</artifactId>
+                <version>${metrics.version}</version>
             </dependency>
 
             <!-- Bytecode Libraries -->
@@ -927,5 +935,6 @@
         <module>demo-standalone-shiro</module>
         <module>demo-standalone-h2</module>
         <module>demo-standalone-other</module>
+        <module>demo-standalone-metrics</module>
     </modules>
 </project>
