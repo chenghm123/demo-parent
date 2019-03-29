@@ -11,8 +11,8 @@
     <artifactId>demo-springboot-dubbo-provider</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.gitee.reger</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>

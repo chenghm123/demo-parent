@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>demo-standalone-metrics</artifactId>
     <dependencies>
+        <!-- project library -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>demo-standalone-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
