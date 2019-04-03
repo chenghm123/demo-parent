@@ -8,7 +8,7 @@ public class MainTest {
         String url = "/api/weather/city/101030100";
         String host = "t.weather.sojson.com";
         int port = 80;
-        HttpUtils.doGet(host, port, url);
+        System.out.println(HttpUtils.doGet(host, port, url));
     }
 
 
