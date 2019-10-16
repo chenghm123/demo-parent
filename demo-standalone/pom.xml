@@ -34,7 +34,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <shiro.version>1.4.0</shiro.version>
         <zxing.version>3.3.3</zxing.version>
-        <netty.version>4.1.15.Final</netty.version>
+        <netty.version>4.1.42.Final</netty.version>
         <mina.version>2.0.16</mina.version>
         <disruptor.version>3.4.2</disruptor.version>
         <jctools.version>2.1.2</jctools.version>
