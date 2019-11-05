@@ -7,15 +7,15 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
-       xmlns:sharding="http://shardingsphere.io/schema/shardingsphere/sharding"
-       xmlns:master-slave="http://shardingsphere.io/schema/shardingsphere/masterslave"
+       xmlns:sharding="http://shardingsphere.apache.org/schema/shardingsphere/sharding"
+       xmlns:master-slave="http://shardingsphere.apache.org/schema/shardingsphere/masterslave"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-       http://shardingsphere.io/schema/shardingsphere/sharding http://shardingsphere.io/schema/shardingsphere/sharding/sharding.xsd
-       http://shardingsphere.io/schema/shardingsphere/masterslave http://shardingsphere.io/schema/shardingsphere/masterslave/master-slave.xsd">
+       http://shardingsphere.apache.org/schema/shardingsphere/sharding http://shardingsphere.apache.org/schema/shardingsphere/sharding/sharding.xsd
+       http://shardingsphere.apache.org/schema/shardingsphere/masterslave http://shardingsphere.apache.org/schema/shardingsphere/masterslave/master-slave.xsd">
 
     <!--批量包扫描-->
     <context:component-scan base-package="com.accelerator.demo.standalone.shardingsphere">
@@ -43,7 +43,7 @@
           p:suppressClose="true"/>
 
     <bean id="randomStrategy"
-          class="io.shardingsphere.api.algorithm.masterslave.RoundRobinMasterSlaveLoadBalanceAlgorithm"/>
+          class="org.apache.shardingsphere.core.strategy.masterslave.RoundRobinMasterSlaveLoadBalanceAlgorithm"/>
     <master-slave:data-source id="dataSource" master-data-source-name="dataSource_master"
                               slave-data-source-names="dataSource_slave_0, dataSource_slave_1"
                               strategy-ref="randomStrategy"/>

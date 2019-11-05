@@ -30,7 +30,7 @@
         <spring-session.version>1.3.1.RELEASE</spring-session.version>
         <spring-rabbit.version>1.7.3.RELEASE</spring-rabbit.version>
         <rocketmq.version>4.5.0</rocketmq.version>
-        <jackson.version>2.9.10</jackson.version>
+        <jackson.version>2.10.0</jackson.version>
         <fastjson.version>1.2.47</fastjson.version>
         <shiro.version>1.4.0</shiro.version>
         <zxing.version>3.3.3</zxing.version>
@@ -60,7 +60,7 @@
         <simple-spring-memcached.version>3.6.1</simple-spring-memcached.version>
         <mysql.version>5.1.41</mysql.version>
         <h2.version>1.4.197</h2.version>
-        <shardingsphere.version>3.0.0</shardingsphere.version>
+        <shardingsphere.version>4.0.0-RC2</shardingsphere.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <mybatis.version>3.4.2</mybatis.version>
@@ -557,7 +557,7 @@
 
             <!-- Sharding Sphere -->
             <dependency>
-                <groupId>io.shardingsphere</groupId>
+                <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-spring-namespace</artifactId>
                 <version>${shardingsphere.version}</version>
             </dependency>
