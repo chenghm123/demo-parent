@@ -1,11 +1,11 @@
 package com.accelerator.demo.springboot.dubbo.provider.impl;
 
 import com.accelerator.demo.springboot.dubbo.service.DemoService;
-import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Service(protocol = "dubbo")
+@Service
 public class DemoServiceImpl implements DemoService {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
