@@ -114,5 +114,6 @@
         <module>demo-springboot-webapp</module>
         <module>demo-springboot-dubbo</module>
         <module>demo-springboot-redisson</module>
+        <module>demo-springboot-ldap-server</module>
     </modules>
 </project>
