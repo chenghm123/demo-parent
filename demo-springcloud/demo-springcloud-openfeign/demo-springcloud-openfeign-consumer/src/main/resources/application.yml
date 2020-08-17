@@ -5,3 +5,7 @@ eureka:
 spring:
   application:
     name: eureka-consumer
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true

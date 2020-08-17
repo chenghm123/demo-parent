@@ -9,4 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>demo-springcloud-openfeign-consumer</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    </dependencies>
 </project>
