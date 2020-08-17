@@ -46,11 +46,8 @@ public class CanalListenerContainer implements InitializingBean, DisposableBean 
         connectors = new ArrayList<>(listenerMap.size());
 
         for (String topic : listenerMap.keySet()) {
-            RocketMQCanalConnector connector = new RocketMQCanalConnector(
-                    nameServer, topic, groupName,
-                    accessKey, secretKey,
-                    true
-            );
+            RocketMQCanalConnector connector = new RocketMQCanalConnector(nameServer,
+                    topic, groupName, accessKey, secretKey, 10, true);
             connector.connect();
             connector.subscribe();
             connectors.add(connector);

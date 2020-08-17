@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Hoxton.SR6</version> <!-- 直接百度搜索更容易找到最新版本 -->
+        <version>Hoxton.SR7</version> <!-- 直接百度搜索更容易找到最新版本 -->
     </parent>
     <groupId>com.accelerator.demo</groupId>
     <artifactId>demo-springcloud</artifactId>
@@ -37,6 +37,7 @@
     </build>
     <modules>
         <module>demo-springcloud-config</module>
-        <module>demo-springcloud-eureka</module>
+        <module>demo-springcloud-eureka-server</module>
+        <module>demo-springcloud-openfeign</module>
     </modules>
 </project>
