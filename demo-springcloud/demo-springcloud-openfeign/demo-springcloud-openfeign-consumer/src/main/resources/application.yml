@@ -9,3 +9,5 @@ spring:
     loadbalancer:
       ribbon:
         enabled: true
+      retry:
+        enabled: true
