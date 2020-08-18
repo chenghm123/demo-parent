@@ -1,4 +1,4 @@
-package com.accelerator.demo.springcloud.fegin.consumer;
+package com.accelerator.demo.springcloud.openfegin.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

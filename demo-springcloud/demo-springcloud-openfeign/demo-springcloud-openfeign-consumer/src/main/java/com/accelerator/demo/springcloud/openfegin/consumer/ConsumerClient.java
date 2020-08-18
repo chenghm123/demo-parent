@@ -1,4 +1,4 @@
-package com.accelerator.demo.springcloud.fegin.consumer;
+package com.accelerator.demo.springcloud.openfegin.consumer;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
