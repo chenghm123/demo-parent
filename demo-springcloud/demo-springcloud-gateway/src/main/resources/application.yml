@@ -15,5 +15,7 @@ spring:
           uri: lb://openfeign-consumer
           predicates:
             - Path=/index
+          filters:
+            - name: Post
 server:
   port: 80
