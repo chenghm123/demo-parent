@@ -11,3 +11,5 @@ spring:
         enabled: true
       retry:
         enabled: true
+server:
+  port: 7080

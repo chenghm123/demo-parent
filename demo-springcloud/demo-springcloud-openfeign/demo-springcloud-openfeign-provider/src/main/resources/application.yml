@@ -5,3 +5,5 @@ eureka:
 spring:
   application:
     name: openfeign-provider
+server:
+  port: 8080
