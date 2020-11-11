@@ -10,5 +10,6 @@
         <module>demo-springcloud</module>
         <module>demo-springboot</module>
         <module>demo-standalone</module>
+        <module>demo-springcloud</module>
     </modules>
 </project>
