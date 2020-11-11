@@ -2,18 +2,27 @@ package com.accelerator.demo.springcloud.openfegin.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootApplication @EnableFeignClients
+import javax.annotation.Resource;
+
+@SpringBootApplication
+@EnableFeignClients
+@EnableDiscoveryClient
 public class OpenfeignConsumerApplication {
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext applicationContext = SpringApplication
-                .run(OpenfeignConsumerApplication.class, args);
+    @Resource
+    private ConsumerClient consumerClient;
 
-        ConsumerClient consumerClient = applicationContext.getBean(ConsumerClient.class);
-        System.out.println(consumerClient.index());
+    @RequestMapping("/index")
+    public String index() {
+        return consumerClient.index();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(OpenfeignConsumerApplication.class, args);
     }
 
 }

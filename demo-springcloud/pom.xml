@@ -39,5 +39,6 @@
         <module>demo-springcloud-config</module>
         <module>demo-springcloud-eureka-server</module>
         <module>demo-springcloud-openfeign</module>
+        <module>demo-springcloud-gateway</module>
     </modules>
 </project>
