@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Hoxton.SR9</version> <!-- 直接百度搜索更容易找到最新版本 -->
+        <version>Hoxton.SR10</version> <!-- 直接百度搜索更容易找到最新版本 -->
     </parent>
     <groupId>com.accelerator.demo</groupId>
     <artifactId>demo-springcloud</artifactId>
