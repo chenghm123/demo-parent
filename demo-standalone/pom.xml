@@ -22,7 +22,7 @@
         <commons-httpclient.version>3.1</commons-httpclient.version>
         <commons-net.version>3.6</commons-net.version>
         <commons-pool2.version>2.4.2</commons-pool2.version>
-        <guava.version>27.0.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <spring.version>5.2.9.RELEASE</spring.version>
         <spring-data-rest-webmvc.version>2.6.4.RELEASE</spring-data-rest-webmvc.version>
         <spring-data-jpa.version>2.1.8.RELEASE</spring-data-jpa.version>
