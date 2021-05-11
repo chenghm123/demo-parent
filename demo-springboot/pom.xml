@@ -18,9 +18,10 @@
         <pagehelper-spring-boot-starter.version>1.2.13</pagehelper-spring-boot-starter.version>
         <mapper-spring-boot-starter.version>2.1.5</mapper-spring-boot-starter.version>
         <dubbo-spring-boot-starter.version>2.7.8</dubbo-spring-boot-starter.version>
-        <curator.version>2.13.0</curator.version>
+        <curator.version>5.1.0</curator.version>
         <redisson-spring-boot-starter.version>3.9.1</redisson-spring-boot-starter.version>
         <commons-lang3.version>3.6</commons-lang3.version>
+        <activiti-spring-boot-starter.version>7.1.0.M6</activiti-spring-boot-starter.version>
 
         <!-- Project configuration -->
         <java.version>1.8</java.version>
@@ -54,6 +55,13 @@
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo-spring-boot-starter.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter</artifactId>
+                <version>${activiti-spring-boot-starter.version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
@@ -116,5 +124,6 @@
         <module>demo-springboot-redisson</module>
         <module>demo-springboot-ldap-server</module>
         <module>demo-springboot-webflux</module>
+        <module>demo-springboot-activiti</module>
     </modules>
 </project>
