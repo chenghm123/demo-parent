@@ -2,20 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:shardingsphere="http://shardingsphere.apache.org/schema/shardingsphere/datasource"
        xmlns:sharding="http://shardingsphere.apache.org/schema/shardingsphere/sharding"
-       xmlns:master-slave="http://shardingsphere.apache.org/schema/shardingsphere/masterslave"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-       http://shardingsphere.apache.org/schema/shardingsphere/sharding http://shardingsphere.apache.org/schema/shardingsphere/sharding/sharding.xsd
-       http://shardingsphere.apache.org/schema/shardingsphere/masterslave http://shardingsphere.apache.org/schema/shardingsphere/masterslave/master-slave.xsd">
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+          http://shardingsphere.apache.org/schema/shardingsphere/datasource http://shardingsphere.apache.org/schema/shardingsphere/datasource/datasource.xsd
+          http://shardingsphere.apache.org/schema/shardingsphere/sharding http://shardingsphere.apache.org/schema/shardingsphere/sharding/sharding.xsd">
 
     <!--批量包扫描-->
     <context:component-scan base-package="com.accelerator.demo.standalone.shardingsphere">
@@ -23,28 +15,43 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean id="dataSource_master" class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
-          p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://mysql:3306/master?useSSL=false&amp;autoReconnect=true"
-          p:username="root"
-          p:password="root"
-          p:suppressClose="true"/>
-    <bean id="dataSource_slave_0" class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
-          p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://mysql:3306/salve_0?useSSL=false&amp;autoReconnect=true"
-          p:username="root"
-          p:password="root"
-          p:suppressClose="true"/>
-    <bean id="dataSource_slave_1" class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
-          p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://mysql:3306/salve_1?useSSL=false&amp;autoReconnect=true"
-          p:username="root"
-          p:password="root"
-          p:suppressClose="true"/>
+    <!-- 配置分表策略 -->
+    <sharding:standard-strategy id="tableStrategy" sharding-column="username"
+                                algorithm-ref="tableShardingAlgorithm"/>
+    <sharding:sharding-algorithm id="tableShardingAlgorithm" type="INLINE">
+        <props>
+            <prop key="algorithm-expression">t_order_$->{username % 2}</prop>
+        </props>
+    </sharding:sharding-algorithm>
 
-    <bean id="randomStrategy"
-          class="org.apache.shardingsphere.core.strategy.masterslave.RoundRobinMasterSlaveLoadBalanceAlgorithm"/>
-    <master-slave:data-source id="dataSource" master-data-source-name="dataSource_master"
-                              slave-data-source-names="dataSource_slave_0, dataSource_slave_1"
-                              strategy-ref="randomStrategy"/>
+    <!-- 配置sharding策略 -->
+    <sharding:rule id="shardingRule">
+           <sharding:table-rules>
+            <sharding:table-rule actual-data-nodes="ds0.t_order_$->{0..1}"
+                                 table-strategy-ref="tableStrategy"
+                                 logic-table="t_order"/>
+        </sharding:table-rules>
+    </sharding:rule>
+
+
+    <shardingsphere:data-source id="dataSource" data-source-names="ds0,ds1" rule-refs="shardingRule">
+        <props>
+            <prop key="sql-show">true</prop>
+        </props>
+    </shardingsphere:data-source>
+
+    <bean id="ds0" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/demo?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="suppressClose" value="true"/>
+    </bean>
+    <bean id="ds1" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/demo?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="suppressClose" value="true"/>
+    </bean>
 </beans>

@@ -32,7 +32,7 @@
         <rocketmq.version>4.7.0</rocketmq.version>
         <jackson.version>2.10.0</jackson.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <shiro.version>1.5.0</shiro.version>
+        <shiro.version>1.7.1</shiro.version>
         <zxing.version>3.3.3</zxing.version>
         <netty.version>4.1.42.Final</netty.version>
         <mina.version>2.0.16</mina.version>
@@ -60,7 +60,7 @@
         <simple-spring-memcached.version>3.6.1</simple-spring-memcached.version>
         <mysql.version>8.0.21</mysql.version>
         <h2.version>1.4.197</h2.version>
-        <shardingsphere.version>4.0.0-RC2</shardingsphere.version>
+        <shardingsphere.version>5.0.0-alpha</shardingsphere.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <mybatis.version>3.4.2</mybatis.version>
@@ -559,7 +559,7 @@
             <!-- Sharding Sphere -->
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>sharding-jdbc-spring-namespace</artifactId>
+                <artifactId>shardingsphere-jdbc-core-spring-namespace</artifactId>
                 <version>${shardingsphere.version}</version>
             </dependency>
 

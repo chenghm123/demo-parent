@@ -2,13 +2,13 @@ package com.accelerator.demo.standalone.shardingsphere;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -21,16 +21,16 @@ public class DefaultTest {
 
     @Test
     public void test() throws SQLException {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.afterPropertiesSet();
+
         int i = 0;
         while (true) {
             try (Connection conn = dataSource.getConnection();
                  Statement stmt = conn.createStatement()) {
-                stmt.executeQuery("select distinct  username from t_user");
-                ResultSet resultSet = stmt.getResultSet();
-                while (resultSet.next()) {
-                    String string = resultSet.getString(1);
-                    System.out.println(i + "=" + string);
-                }
+                stmt.executeQuery("select * from t_dict");
+                stmt.executeQuery("select * from t_order");
+                stmt.executeQuery("select * from t_user");
             }
             i++;
         }

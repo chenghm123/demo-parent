@@ -10,10 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>demo-standalone-shardingsphere</artifactId>
     <dependencies>
-        <!-- JDBC Support -->
         <dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-jdbc-spring-namespace</artifactId>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -22,6 +21,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc-core-spring-namespace</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
