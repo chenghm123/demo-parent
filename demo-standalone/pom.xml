@@ -59,7 +59,7 @@
         <memcached.java.client.version>3.0.2</memcached.java.client.version>
         <simple-spring-memcached.version>3.6.1</simple-spring-memcached.version>
         <mysql.version>8.0.21</mysql.version>
-        <h2.version>1.4.197</h2.version>
+        <h2.version>2.1.210</h2.version>
         <shardingsphere.version>5.0.0-alpha</shardingsphere.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
