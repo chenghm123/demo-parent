@@ -7,6 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.6</version>
+        <relativePath/>
     </parent>
     <groupId>com.accelerator.demo</groupId>
     <artifactId>demo-springboot</artifactId>
@@ -124,6 +125,6 @@
         <module>demo-springboot-redisson</module>
         <module>demo-springboot-ldap-server</module>
         <module>demo-springboot-webflux</module>
-        <module>demo-springboot-activiti</module>
+        <module>demo-springboot-security</module>
     </modules>
 </project>
