@@ -101,6 +101,7 @@
     </build>
     <modules>
         <module>demo-springboot-mybatis</module>
+        <module>demo-springboot-rabbitmq</module>
         <module>demo-springboot-webapp</module>
         <module>demo-springboot-dubbo</module>
         <module>demo-springboot-redisson</module>
