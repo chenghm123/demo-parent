@@ -1,12 +1,13 @@
 package com.accelerator.demo.springboot.mybatis.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-@Data @Table(name = "t_user")
+@Data @TableName(value = "t_user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -17,8 +18,8 @@ public class User implements Serializable {
     /** 密码 */
     private String password;
 
-    // 没有这个@Id注解 根据主键查询无效
-    @Id /** 主键ID */
+    /** 主键ID */
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
 }

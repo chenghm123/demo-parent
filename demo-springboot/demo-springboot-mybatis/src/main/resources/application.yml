@@ -5,19 +5,14 @@ spring:
     username: root
     password: root
 
-mybatis: # Mybatis配置
-  mapper-locations: classpath:mybatis/mappers/*.xml
-  config-location: classpath:mybatis-config.xml
-
-mapper: # Mybatis通用mapper
-  mappers: com.accelerator.demo.springboot.mybatis.DemoMapper #mappers 多个接口时逗号隔开
-  identity: MYSQL
-  not-empty: false
-
-#Mybatis Pagehelper
-pagehelper:
-  helper-dialect: mysql
-
 logging:
   level:
     com.accelerator.demo.springboot.mybatis.mapper: debug
+
+mybatis-plus:
+  configuration:
+    default-executor-type: simple
+  global-config:
+    banner: false
+  mapper-locations: classpath:mybatis/mappers/*.xml
+  config-location: classpath:mybatis-config.xml
