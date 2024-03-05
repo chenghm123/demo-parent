@@ -1,6 +1,6 @@
 package com.accelerator.demo.springboot.ldap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
